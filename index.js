@@ -135,7 +135,7 @@ function initprogram() {
          let size = prompt("Introduce el talle del producto")
         }
         else {
-            let productos = new productos (name, cosr, size)
+            let productos = new productos (name, cost, size)
             productosArr.push (producto)
             cosole.log (productosArr)
             initprogram()
@@ -144,3 +144,40 @@ function initprogram() {
      }
  }
 
+
+ function VerProductosForOF() {
+    auxiliardeproductos(productosArr, alert)
+    alert("fin de la lista")
+    initprogram()
+
+ }
+
+
+ function auxiliardeproductos(arr, fn) {
+     for(const producto of arr) {
+         fn(producto.name + " " + producto.cost + " " + producto.size)
+
+     }
+
+
+ }
+
+ function CalcularElPromedio (arrayproductos) {
+     let MontoTotal = 0
+     let CantidadDeProductos = arrayproductos.length
+     PorCadaUno(arrayproductos, (producto) => {
+        MontoTotal += producto.cost
+     })
+     
+ }
+
+ function PorCadaUno (arrayproductos, funcion){
+    for(const producto of arrayproductos) {
+         funcion(productos)
+    }
+    
+ initprogram()
+ }
+
+
+ initprogram()
