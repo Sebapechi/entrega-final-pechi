@@ -108,16 +108,109 @@ class productos {
 }
 
 
+const dbProductos = [
+    {
+        id: 1,
+        Name: "Musculosa Masculina",
+        Cost: 900,
+        Size: "s, m, l, xl, xxl,",   
+    },
+     {
+        id: 2,
+        Name: "Musculosa Femenina",
+        Cost: 900,
+        Size: "s, m, l, xl, xxl," ,
+    }, 
+     {
+        id: 3,
+        Name: "Remera flash",
+        Cost: 900,
+        Size: "s, m, l, xl, xxl,",
+    },
+     {
+        id: 4,
+        Name: "Equipo de juego",
+        Cost: 1500,
+        Size: "s, m, l, xl, xxl,",
+    },
+    {
+        id: 5,
+        Name: "Camperon Flash",
+        Cost: 2780,
+        Size: "s, m, l, xl, xxl,",
+    }, 
+    {
+        id: 6,
+        Name: "Chomba Flash",
+        Cost: 1200,
+        Size: "s, m, l, xl, xxl,",
+    }
+
+]
+
+
+let productosArr = []
+let carrito = []
+let True0False = true
+
+class producto{
+    constructor(id, Name, Cost, Size){
+        this.id = id;
+        this.Name = Name;
+        this.Cost = Cost;
+        this.Size = Size;
+    }
+    Iva(){
+        return this.price * 0.21;
+    }
+}
+
+function pushProductos(){
+    for (const producto of dbProductos){
+        productosArr.push(new producto(producto.id, producto.Name,
+            producto.Cost, producto.Size))
+    }
+}
+
+pushProductos()
+
 function initprogram() {
     let selectSection = prompt ("¿Que quieres ver? \n 1.Añadir producto \n 2.Escoge el color \n 3.Escoge el talle \n 4.Ver productos \n 5.Añadir el ultimo producto \n 6.Añadir el primer producto \n 7.Buscar producto \n 8.Ver productos con - \n 9.slir")
 
 }
- while (true0false) {
+ while (True0False) {
       switch(selectSection){
         case "1":
-            agregarproducto()
+            showProductosFor()
             break;
-
+        case "2":
+            agregarproducto()
+          break;
+        case "3":
+            alert('El promedio de valor por prenda en stock es de ${CalcularCostPromedio(productosArr)}')
+          break;
+        case "4":
+            atoZ()
+          break; 
+        case "5":
+            BuscarProducto()
+          break; 
+        case "6":
+            BuscarEnDB()
+          break;
+        case "7":
+            ComprarProducto()
+          break;
+        case "8":
+            BuscarProductoConMap()
+          break;
+        case "9":
+            True0False = false
+          break;
+       default:
+          alert("No es una opcion valida")
+          selectSection = prompt ("¿Que quieres ver? \n 1.Añadir producto \n 2.Escoge el color \n 3.Escoge el talle \n 4.Ver productos \n 5.Añadir el ultimo producto \n 6.Añadir el primer producto \n 7.Buscar producto \n 8.Ver productos con - \n 9.slir")
+        break;
       }
  }
 
@@ -181,3 +274,42 @@ function initprogram() {
 
 
  initprogram()
+
+const numeros = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+   let acumulador = 0
+
+const duplicados = []
+
+function mayorQue(n) {
+   return (m) => m > n
+}
+
+mayorQue(10)(11)
+
+let mayorQue10 = mayorQue(10)
+mayorQue(11)
+
+
+function PorCadaUno (arr, funcion) {
+    
+   for (const elemento of arr) {
+
+       funcion (elemento)
+           
+   }
+
+
+}
+
+PorCadaUno(numeros, duplicarNumeros)
+
+PorCadaUno (numeros, (el) => {
+    duplicados.push(el * 2)
+})
+
+console.log(duplicados)
+
+
+function duplicarNumeros(num) {
+    duplicados.push(num * 2)
+}
